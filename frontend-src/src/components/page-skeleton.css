@@ -1,0 +1,44 @@
+.page-skeleton-page {
+  min-height: 40vh;
+  padding: clamp(24px, 5vw, 48px);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.page-skeleton-bar {
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e9e9ee 25%, #f4f4f7 37%, #e9e9ee 63%);
+  background-size: 400% 100%;
+  animation: page-skel-pulse 1.35s ease-in-out infinite;
+}
+
+.page-skeleton-bar--hero {
+  height: clamp(140px, 22vw, 220px);
+  margin-bottom: 1.25rem;
+}
+
+.page-skeleton-bar--medium {
+  height: 96px;
+  flex: 1;
+  max-width: 48%;
+}
+
+.page-skeleton-bar--long {
+  height: 18px;
+  width: min(440px, 90%);
+}
+
+.page-skeleton-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 1.25rem;
+}
+
+@keyframes page-skel-pulse {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
