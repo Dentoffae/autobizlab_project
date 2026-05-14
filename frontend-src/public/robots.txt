@@ -1,0 +1,12 @@
+# https://autobizlab.store
+User-agent: *
+Allow: /
+
+# Служебные разделы
+Disallow: /api/
+Disallow: /pgadmin/
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /ru/admin
+
+Sitemap: https://autobizlab.store/sitemap.xml
