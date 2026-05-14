@@ -1,0 +1,41 @@
+[project]
+name = "autobizlab-backend"
+version = "2.0.0"
+description = "AutoBizLab API"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["app", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = [
+  "B008",
+  "E501",
+  "E402",
+  "E702",
+  "B904",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"alembic/**" = ["E402", "I001"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = false
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+mypy_path = "."
+packages = ["app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]

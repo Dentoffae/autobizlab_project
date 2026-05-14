@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AutoBizLab — AI автоматизация бизнеса в ОАЭ | AI Business Automation UAE</title>
+  <meta name="description" content="Внедряем AI-агентов и чат-ботов для автоматизации бизнес-процессов в ОАЭ и MENA. Сокращение ручной работы до 70%, рост конверсии, внедрение за 7–14 дней."/>
+  <meta name="keywords" content="AI автоматизация бизнес ОАЭ, чат-бот для бизнеса Дубай, AI агент автоматизация, business automation UAE, chatbot Dubai, AI integration MENA"/>
+  <meta property="og:title" content="AutoBizLab — AI автоматизация в ОАЭ"/>
+  <meta property="og:description" content="Внедряем AI-агентов за 7–14 дней. Автоматизация до 70% задач."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #FFFFFF;
+      --bg2:      #F5F7FA;
+      --bg3:      #EBF0F8;
+      --card:     #F8FAFC;
+      --bg-dark:  #041A40;
+      --bg-dark2: #072454;
+      --border:   #DDE3EE;
+      --accent:   #28A634;
+      --accent2:  #0D83EA;
+      --glow:     rgba(40,166,52,.2);
+      --glow2:    rgba(13,131,234,.2);
+      --text:     #1C2536;
+      --muted:    #5A6478;
+      --faint:    #9AA3B2;
+      --success:  #28A634;
+      --error:    #E53935;
+      --warn:     #F59E0B;
+      --grad:     linear-gradient(135deg,#28A634 0%,#0D83EA 100%);
+      --grad-dark:linear-gradient(135deg,#041A40 0%,#072454 100%);
+      --radius:   10px;
+      --shadow:   0 4px 24px rgba(4,26,64,.1);
+      --shadow-sm:0 2px 12px rgba(4,26,64,.08);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%}
+
+    /* ── Utilities ─────────────────────────────────────── */
+    .container{max-width:1140px;margin:0 auto;padding:0 24px}
+    .text-center{text-align:center}
+    .text-grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:40px;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);font-size:13px;font-weight:500;background:rgba(255,255,255,.1)}
+    .section{padding:96px 0}
+    .section-sm{padding:64px 0}
+    .label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+    .label-white{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:16px}
+
+    /* ── Buttons ─────────────────────────────────────── */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;border:none;text-decoration:none}
+    .btn-green{background:var(--accent);color:#fff;box-shadow:0 4px 20px rgba(40,166,52,.35)}
+    .btn-green:hover{background:#21922B;transform:translateY(-2px);box-shadow:0 6px 28px rgba(40,166,52,.45)}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 20px rgba(40,166,52,.35)}
+    .btn-primary:hover{background:#21922B;transform:translateY(-2px);box-shadow:0 6px 28px rgba(40,166,52,.45)}
+    .btn-white{background:#fff;color:var(--bg-dark);font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 32px rgba(0,0,0,.2)}
+    .btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5)}
+    .btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+    .btn-lg{padding:18px 36px;font-size:17px;border-radius:10px}
+    .btn-block{width:100%;justify-content:center}
+
+    /* ── Header ─────────────────────────────────────── */
+    header{position:sticky;top:0;z-index:100;background:var(--bg-dark);transition:box-shadow .3s}
+    header.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.4)}
+
+    /* Top bar: logo | offer | phone */
+    .header-top{border-bottom:1px solid rgba(255,255,255,.1)}
+    .header-top-inner{max-width:1140px;margin:0 auto;padding:14px 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px}
+    .logo{display:block;font-size:22px;font-weight:800;color:#fff;white-space:nowrap;letter-spacing:-.5px;line-height:1.1}
+    .logo span{color:var(--accent)}
+    .logo-sub{font-size:11px;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.03em;margin-top:2px}
+    .header-offer{font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.5;text-align:center;font-weight:500;max-width:480px;margin:0 auto}
+    .header-contact{display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+    .header-phone{font-size:20px;font-weight:700;color:#fff;white-space:nowrap;letter-spacing:-.3px;transition:color .2s}
+    .header-phone:hover{color:var(--accent)}
+    .header-addr{font-size:11px;color:rgba(255,255,255,.38);text-align:right;line-height:1.4}
+
+    /* Nav strip: lang + cta */
+    .nav{max-width:1140px;margin:0 auto;height:50px;display:flex;align-items:center;justify-content:flex-end;gap:24px;padding:0 24px;border-top:1px solid rgba(255,255,255,.06)}
+    .nav-right{display:flex;align-items:center;gap:20px}
+    .lang-switcher{display:flex;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;overflow:hidden}
+    .lang-btn{background:none;border:none;padding:7px 13px;color:rgba(255,255,255,.6);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+    .lang-btn.active{background:var(--accent);color:#fff}
+    .nav-cta{display:none}
+    @media(min-width:640px){.nav-cta{display:inline-flex}}
+
+    /* ── Hero ─────────────────────────────────────── */
+    /*
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ФОТО ФОНА — как поменять:
+        1. Положите фото в папку: frontend/img/hero-bg.jpg
+        2. Готово! Фото применится автоматически.
+        Или укажите другой URL прямо в строке background-image ниже.
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    */
+    #hero{
+      min-height:calc(100vh - 116px);
+      display:flex;
+      align-items:center;
+      padding:72px 0 64px;
+      background-color:#020d1f;
+      background-image:
+        linear-gradient(105deg,rgba(2,10,26,.93) 0%,rgba(4,26,64,.82) 45%,rgba(4,26,64,.52) 100%),
+        url('/img/hero-bg.jpg');   /* ← путь к вашему фото */
+      background-size:cover;
+      background-position:center 30%;
+      background-repeat:no-repeat;
+    }
+    .hero-wrap{display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center;position:relative;z-index:1}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:40px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);font-size:13px;font-weight:500;color:rgba(255,255,255,.8);margin-bottom:24px;backdrop-filter:blur(4px)}
+    .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    h1{font-size:clamp(30px,3.8vw,52px);font-weight:900;line-height:1.15;margin-bottom:20px;color:#fff}
+    .hero-sub{font-size:17px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:28px;max-width:540px}
+
+    /* Checklist items */
+    .hero-checklist{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:36px}
+    .hero-checklist li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:rgba(255,255,255,.88);line-height:1.5}
+    .hero-checklist li::before{content:'✓';flex-shrink:0;width:22px;height:22px;border-radius:4px;background:var(--accent);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+
+    .hero-stats{display:flex;gap:32px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12)}
+    .hero-stat .num{font-size:28px;font-weight:900;color:var(--accent)}
+    .hero-stat .lbl{font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.4}
+
+    /* Hero Form Card */
+    .form-card{background:#fff;border-radius:16px;padding:28px 32px;box-shadow:0 24px 64px rgba(0,0,0,.38)}
+    .form-card-urgency{background:linear-gradient(135deg,rgba(40,166,52,.1),rgba(13,131,234,.06));border:1px solid rgba(40,166,52,.22);border-radius:10px;padding:13px 15px;font-size:13px;color:var(--text);line-height:1.6;margin-bottom:20px}
+    .form-card-urgency strong{color:var(--accent)}
+    .form-card h3{font-size:19px;font-weight:800;margin-bottom:6px;color:var(--bg-dark)}
+    .form-card .sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5}
+    .form-group{margin-bottom:13px}
+    .form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
+    .form-group input,.form-group select,.form-group textarea{width:100%;background:#F5F7FA;border:1.5px solid var(--border);border-radius:8px;padding:13px 15px;color:var(--text);font-size:15px;font-family:inherit;transition:border-color .2s,box-shadow .2s;outline:none}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(40,166,52,.15)}
+    .form-group input::placeholder,.form-group textarea::placeholder{color:var(--faint)}
+    .form-group select option{background:#fff;color:var(--text)}
+    .form-note{font-size:11px;color:var(--faint);text-align:center;margin-top:12px;line-height:1.5}
+    .form-privacy{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.45;color:var(--text);margin:0 0 14px;cursor:pointer;text-align:left}
+    .form-privacy input[type=checkbox]{width:17px;height:17px;margin-top:2px;flex-shrink:0;accent-color:var(--accent);cursor:pointer}
+    .cta-form-card .form-privacy{color:rgba(255,255,255,.88)}
+    .form-success{display:none;text-align:center;padding:24px}
+    .form-success .icon{font-size:48px;margin-bottom:12px}
+    .form-success h4{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--bg-dark)}
+    .form-success p{font-size:14px;color:var(--muted)}
+
+    /* ── Stats bar ───────────────────────────────────── */
+    .stats-bar{background:#fff;border-bottom:1px solid var(--border);padding:32px 0}
+    .stats-inner{display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:24px}
+    .stat-item{text-align:center}
+    .stat-num{font-size:36px;font-weight:900;color:var(--bg-dark);line-height:1}
+    .stat-label{font-size:13px;color:var(--muted);margin-top:4px}
+
+    /* ── Pain Points ─────────────────────────────────── */
+    .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px}
+    .pain-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;gap:16px;align-items:flex-start;transition:all .2s;box-shadow:var(--shadow-sm)}
+    .pain-item:hover{border-color:#FCA5A5;box-shadow:0 8px 24px rgba(229,57,53,.08);transform:translateY(-2px)}
+    .pain-icon{width:44px;height:44px;border-radius:10px;background:#FEF2F2;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .pain-item h4{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--text)}
+    .pain-item p{font-size:13px;color:var(--muted);line-height:1.6}
+    .pain-cta{margin-top:40px;padding:28px 36px;background:var(--bg-dark);border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .pain-cta p{font-size:17px;font-weight:600;max-width:520px;color:#fff}
+
+    /* ── Services ─────────────────────────────────── */
+    #services{background:var(--bg2)}
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:56px}
+    .service-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:36px;position:relative;overflow:hidden;transition:all .2s;box-shadow:var(--shadow-sm)}
+    .service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--grad);opacity:0;transition:opacity .2s}
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(4,26,64,.12)}
+    .service-card:hover::after{opacity:1}
+    .service-icon{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(40,166,52,.12),rgba(13,131,234,.08));display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;border:1px solid rgba(40,166,52,.15)}
+    .service-card h3{font-size:20px;font-weight:700;margin-bottom:12px;color:var(--bg-dark)}
+    .service-card p{font-size:14px;color:var(--muted);line-height:1.7}
+    .service-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+    .service-tags span{font-size:12px;padding:4px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;color:var(--muted);font-weight:500}
+
+    /* ── Benefits ─────────────────────────────────── */
+    #benefits{background:var(--bg-dark)}
+    .benefits-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .benefit-list{display:flex;flex-direction:column;gap:20px;margin-top:32px}
+    .benefit-item{display:flex;gap:16px;align-items:flex-start}
+    .benefit-check{width:28px;height:28px;border-radius:8px;background:rgba(40,166,52,.2);border:1px solid rgba(40,166,52,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-size:13px;color:var(--accent)}
+    .benefit-item h4{font-size:16px;font-weight:700;margin-bottom:4px;color:#fff}
+    .benefit-item p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.6}
+    .metric-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .metric-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;text-align:center;backdrop-filter:blur(4px)}
+    .metric-num{font-size:42px;font-weight:900;color:var(--accent);line-height:1}
+    .metric-label{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;line-height:1.4}
+
+    /* ── Process ─────────────────────────────────── */
+    #process{background:#fff}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px;position:relative}
+    .steps::before{content:'';position:absolute;top:36px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:.3}
+    .step{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;position:relative;transition:all .2s}
+    .step:hover{background:#fff;box-shadow:0 8px 28px rgba(4,26,64,.1);transform:translateY(-3px)}
+    .step-num{width:52px;height:52px;border-radius:50%;background:var(--bg-dark);color:#fff;font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 16px rgba(4,26,64,.3)}
+    .step:hover .step-num{background:var(--accent);box-shadow:0 4px 16px rgba(40,166,52,.4)}
+    .step h4{font-size:15px;font-weight:700;margin-bottom:10px;color:var(--bg-dark)}
+    .step p{font-size:13px;color:var(--muted);line-height:1.6}
+
+    /* ── Flow ─────────────────────────────────── */
+    #flow{background:var(--bg2)}
+    .flow-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:56px}
+    .flow-steps{display:flex;flex-direction:column;gap:8px}
+    .flow-item{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:10px;border:1px solid var(--border);background:#fff;transition:all .2s;box-shadow:var(--shadow-sm)}
+    .flow-item.active{border-color:rgba(40,166,52,.4);background:#F0FDF4}
+    .flow-arrow{display:flex;justify-content:center;color:var(--faint);font-size:18px;padding:2px 0}
+    .flow-dot{width:36px;height:36px;border-radius:50%;background:var(--bg3);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+    .flow-item.active .flow-dot{background:#D1FAE5;border-color:var(--accent)}
+    .flow-item h4{font-size:14px;font-weight:600;margin-bottom:2px;color:var(--text)}
+    .flow-item p{font-size:12px;color:var(--muted)}
+    .flow-result{background:var(--bg-dark);border-radius:20px;padding:40px;text-align:center}
+    .flow-result .big{font-size:48px;margin-bottom:16px}
+    .flow-result h3{font-size:22px;font-weight:700;margin-bottom:10px;color:#fff}
+    .flow-result p{font-size:15px;color:rgba(255,255,255,.6)}
+
+    /* ── Who ─────────────────────────────────── */
+    #who{background:#fff}
+    .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+    .who-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all .2s;border-top:4px solid transparent}
+    .who-card:hover{border-top-color:var(--accent);box-shadow:0 8px 28px rgba(4,26,64,.1);transform:translateY(-3px);background:#fff}
+    .who-icon{font-size:36px;margin-bottom:16px}
+    .who-card h3{font-size:18px;font-weight:700;margin-bottom:10px;color:var(--bg-dark)}
+    .who-card p{font-size:14px;color:var(--muted);line-height:1.7}
+
+    /* ── CTA Section ─────────────────────────────── */
+    #cta{background:var(--bg-dark)}
+    .cta-inner{display:grid;grid-template-columns:1fr 400px;gap:64px;align-items:center}
+    .cta-list{display:flex;flex-direction:column;gap:14px;margin:28px 0 36px}
+    .cta-list li{display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,.75)}
+    .cta-list li::before{content:'✓';width:24px;height:24px;border-radius:6px;background:rgba(40,166,52,.25);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;border:1px solid rgba(40,166,52,.3)}
+    .cta-form-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:36px;backdrop-filter:blur(8px)}
+    .cta-form-card h3{color:#fff}
+    .cta-form-card .sub{color:rgba(255,255,255,.55)}
+    .cta-form-card .form-group label{color:rgba(255,255,255,.7)}
+    .cta-form-card .form-group input{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff}
+    .cta-form-card .form-group input::placeholder{color:rgba(255,255,255,.3)}
+    .cta-form-card .form-group input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(40,166,52,.2)}
+    .cta-form-card .form-note{color:rgba(255,255,255,.35)}
+
+    /* ── About ─────────────────────────────────── */
+    #about{background:var(--bg2)}
+    .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .about-text h2{margin-bottom:20px}
+    .about-text p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+    .focus-badge{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:#fff;border:1px solid var(--border);border-radius:12px;font-size:14px;font-weight:700;color:var(--accent);margin-top:16px;box-shadow:var(--shadow-sm)}
+    .about-visual{background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px;box-shadow:var(--shadow)}
+    .about-item{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--border)}
+    .about-item:last-child{border-bottom:none;padding-bottom:0}
+    .about-num{font-size:34px;font-weight:900;color:var(--bg-dark);min-width:80px;line-height:1.1}
+    .about-item p{font-size:14px;color:var(--muted);line-height:1.6;padding-top:6px}
+
+    /* ── FAQ ─────────────────────────────────── */
+    #faq{background:#fff}
+    .faq-list{display:flex;flex-direction:column;gap:12px;margin-top:48px;max-width:760px;margin-left:auto;margin-right:auto}
+    .faq-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .2s}
+    .faq-item.open{border-color:rgba(40,166,52,.4);background:#fff;box-shadow:0 4px 20px rgba(4,26,64,.08)}
+    .faq-q{width:100%;background:none;border:none;padding:22px 28px;color:var(--text);font-size:16px;font-weight:600;font-family:inherit;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .faq-q .icon{width:28px;height:28px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:transform .2s,background .2s;color:var(--muted)}
+    .faq-item.open .faq-q .icon{transform:rotate(45deg);background:#D1FAE5;border-color:var(--accent);color:var(--accent)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .faq-item.open .faq-a{max-height:400px}
+    .faq-a-inner{padding:0 28px 24px;font-size:15px;color:var(--muted);line-height:1.7}
+
+    /* ── Footer CTA ─────────────────────────────── */
+    #footer-cta{background:var(--bg-dark);text-align:center;padding:96px 0;position:relative;overflow:hidden}
+    #footer-cta::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at center top,rgba(13,131,234,.2) 0%,transparent 65%);pointer-events:none}
+    #footer-cta h2{font-size:clamp(28px,3.5vw,44px);font-weight:900;margin-bottom:16px;color:#fff;position:relative}
+    #footer-cta p{font-size:17px;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto 40px;position:relative}
+
+    /* ── Footer ─────────────────────────────────── */
+    footer{background:#02122E;padding:48px 0;border-top:1px solid rgba(255,255,255,.06)}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+    .footer-logo{font-size:18px;font-weight:800;color:#fff}
+    .footer-logo span{color:var(--accent)}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-size:14px;color:rgba(255,255,255,.45);transition:color .2s}
+    .footer-links a:hover{color:#fff}
+    .footer-copy{font-size:13px;color:rgba(255,255,255,.3)}
+
+    /* ── Animations ─────────────────────────────── */
+    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.visible{opacity:1;transform:none}
+
+    /* ── Responsive ─────────────────────────────── */
+    @media(max-width:900px){
+      .header-top-inner{grid-template-columns:1fr auto;gap:16px}
+      .header-offer{display:none}
+      .hero-wrap,.benefits-wrap,.flow-wrap,.cta-inner,.about-wrap{grid-template-columns:1fr;gap:40px}
+      .steps,.services-grid{grid-template-columns:1fr 1fr}
+      .steps::before{display:none}
+      .pain-grid,.who-grid{grid-template-columns:1fr}
+      .metric-cards{grid-template-columns:1fr 1fr}
+      .hero-stats{gap:24px}
+      .pain-cta{flex-direction:column}
+      #hero{min-height:auto;padding:48px 0 52px}
+    }
+    @media(max-width:600px){
+      .header-top-inner{grid-template-columns:1fr;gap:10px;text-align:center}
+      .header-contact{align-items:center}
+      .section{padding:64px 0}
+      h1{font-size:28px}
+      .hero-stats{flex-direction:column;gap:16px}
+      .metric-cards{grid-template-columns:1fr}
+      .steps,.services-grid{grid-template-columns:1fr}
+      .nav-cta{display:none!important}
+    }
+
+    /* ── Toast ─────────────────────────────────── */
+    .toast{position:fixed;bottom:32px;right:32px;z-index:999;background:var(--accent);color:#fff;padding:16px 24px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;transform:translateY(16px);transition:all .3s;pointer-events:none;box-shadow:0 8px 24px rgba(40,166,52,.4)}
+    .toast.show{opacity:1;transform:none}
+
+    /* ── Loading spinner ───────────────────────── */
+    .spinner{width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .btn.loading .spinner{display:block}
+    .btn.loading .btn-text{display:none}
+  </style>
+</head>
+<body>
+
+<!-- ─────── HEADER ─────── -->
+<header id="header">
+  <!-- Верхняя строка: лого | оффер | телефон -->
+  <div class="header-top">
+    <div class="header-top-inner">
+      <a href="/" class="logo">
+        AutoBiz<span>Lab</span>
+        <div class="logo-sub" data-i18n="header.logo_sub">AI-автоматизация бизнеса</div>
+      </a>
+      <div class="header-offer" data-i18n="header.offer">
+        Внедряем AI-агентов и чат-ботов, которые автоматизируют до 70% задач и увеличивают прибыль за 7–14 дней
+      </div>
+      <div class="header-contact">
+        <a href="tel:+971501648030" class="header-phone">+971 50 164 80 30</a>
+        <div class="header-addr">Sharjah, UAE &bull; SPC Free Zone</div>
+      </div>
+    </div>
+  </div>
+  <!-- Нижняя строка: переключатель языка + кнопка -->
+  <nav class="nav">
+    <div class="nav-right">
+      <div class="lang-switcher" role="group" aria-label="Language switcher">
+        <button class="lang-btn active" data-lang="ru" aria-pressed="true">RU</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#audit" class="btn btn-green nav-cta" data-i18n="nav.cta">Бесплатный аудит</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ─────── HERO ─────── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-wrap">
+      <div class="hero-left fade-up">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">ОАЭ &amp; MENA • Работаем 24/7</span>
+        </div>
+        <h1 data-i18n="hero.h1">Внедрим AI-агентов и чат-ботов, которые <span class="text-grad">автоматизируют до 70%</span> задач в вашем бизнесе</h1>
+        <ul class="hero-checklist">
+          <li data-i18n="hero.c1">До 70% сокращения ручной работы и операционных расходов</li>
+          <li data-i18n="hero.c2">В 2–3 раза быстрее обработка заявок и рост конверсии</li>
+          <li data-i18n="hero.c3">Запуск за 7–14 дней — без сложной разработки</li>
+          <li data-i18n="hero.c4">Работа 24/7 на Arabic, English, Russian и 50+ языках</li>
+        </ul>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num">70%</div><div class="lbl" data-i18n="hero.stat1">сокращение ручной работы</div></div>
+          <div class="hero-stat"><div class="num">7–14д</div><div class="lbl" data-i18n="hero.stat2">до запуска</div></div>
+          <div class="hero-stat"><div class="num">24/7</div><div class="lbl" data-i18n="hero.stat3">без остановок</div></div>
+        </div>
+      </div>
+      <div class="hero-right fade-up" style="transition-delay:.15s">
+        <div class="form-card" id="audit">
+          <div class="form-card-urgency" data-i18n="form.urgency">
+            Оставьте заявку сейчас и получите <strong>бесплатный аудит бизнеса</strong> с конкретным планом автоматизации в подарок!
+          </div>
+          <h3 data-i18n="form.h3">Получить бесплатный аудит</h3>
+          <p class="sub" data-i18n="form.sub">Без обязательств • 30 минут • конкретный план внедрения</p>
+          <form id="quickForm" novalidate>
+            <div class="form-group">
+              <label for="q_name" data-i18n="form.name_label">Ваше имя</label>
+              <input id="q_name" name="name" type="text" required data-i18n-ph="form.name_ph" placeholder="Иван Иванов"/>
+            </div>
+            <div class="form-group">
+              <label for="q_phone" data-i18n="form.phone_label">Номер телефона / WhatsApp</label>
+              <input id="q_phone" name="phone" type="tel" required data-i18n-ph="form.phone_ph" placeholder="+971 50 123 4567"/>
+            </div>
+            <label class="form-privacy">
+              <input type="checkbox" name="privacy_consent" value="1"/>
+              <span data-i18n="form.privacy_check">Я даю согласие на обработку персональных данных</span>
+            </label>
+            <button type="submit" class="btn btn-green btn-lg btn-block" id="quickSubmit">
+              <span class="btn-text" data-i18n="form.btn">Оставить заявку на аудит →</span>
+              <span class="spinner"></span>
+            </button>
+            <p class="form-note" data-i18n="form.note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Данные не передаются третьим лицам.</p>
+          </form>
+          <div class="form-success" id="quickSuccess">
+            <div class="icon">✅</div>
+            <h4 data-i18n="form.ok_h">Заявка получена!</h4>
+            <p data-i18n="form.ok_p">Переводим вас на следующий шаг…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── STATS BAR ─────── -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">70%</div><div class="stat-label" data-i18n="hero.stat1">сокращение ручной работы</div></div>
+      <div class="stat-item"><div class="stat-num">7–14</div><div class="stat-label" data-i18n="hero.stat2">дней до запуска</div></div>
+      <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label" data-i18n="hero.stat3">работа без остановок</div></div>
+      <div class="stat-item"><div class="stat-num">3×</div><div class="stat-label">faster lead response</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────── PAIN POINTS ─────── -->
+<section class="section" id="pain" style="background:#fff">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="label" data-i18n="pain.label">Проблема</div>
+      <h2 style="font-size:clamp(26px,3vw,40px);font-weight:800;max-width:600px;margin:0 auto 16px" data-i18n="pain.h2">Вы теряете деньги из-за ручных процессов</h2>
+      <p style="font-size:17px;color:var(--muted);max-width:520px;margin:0 auto" data-i18n="pain.sub">Каждый день бизнес теряет клиентов и время из-за отсутствия автоматизации</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-item fade-up">
+        <div class="pain-icon">⏱️</div>
+        <div>
+          <h4 data-i18n="pain.i1h">Долгая обработка заявок</h4>
+          <p data-i18n="pain.i1p">Клиенты ждут ответа часами, а конкуренты уже закрыли сделку</p>
+        </div>
+      </div>
+      <div class="pain-item fade-up" style="transition-delay:.1s">
+        <div class="pain-icon">📵</div>
+        <div>
+          <h4 data-i18n="pain.i2h">Менеджеры не успевают</h4>
+          <p data-i18n="pain.i2p">Рутинные вопросы «съедают» рабочее время, нет сил на важное</p>
+        </div>
+      </div>
+      <div class="pain-item fade-up" style="transition-delay:.15s">
+        <div class="pain-icon">💸</div>
+        <div>
+          <h4 data-i18n="pain.i3h">Клиенты уходят к конкурентам</h4>
+          <p data-i18n="pain.i3p">В ОАЭ скорость = деньги. Кто отвечает быстрее — зарабатывает больше</p>
+        </div>
+      </div>
+      <div class="pain-item fade-up" style="transition-delay:.2s">
+        <div class="pain-icon">🔄</div>
+        <div>
+          <h4 data-i18n="pain.i4h">Рутина пожирает ресурсы</h4>
+          <p data-i18n="pain.i4p">Повторяющиеся задачи отнимают до 70% времени команды</p>
+        </div>
+      </div>
+    </div>
+    <div class="pain-cta fade-up">
+      <p data-i18n="pain.cta_text">👉 В ОАЭ скорость ответа определяет, кто получит клиента. AI отвечает мгновенно — 24/7, без выходных.</p>
+      <a href="#audit" class="btn btn-green" data-i18n="pain.cta_btn">Решить это сейчас</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── SERVICES ─────── -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="label" data-i18n="srv.label">Решения</div>
+      <h2 style="font-size:clamp(26px,3vw,40px);font-weight:800;max-width:640px;margin:0 auto 16px" data-i18n="srv.h2">Мы внедряем AI, который работает за вас 24/7</h2>
+      <p style="font-size:17px;color:var(--muted);max-width:500px;margin:0 auto" data-i18n="srv.sub">Без сложной разработки и долгих внедрений — запускаем готовое решение</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">🤖</div>
+        <h3 data-i18n="srv.c1h">AI-чат-боты для обработки заявок</h3>
+        <p data-i18n="srv.c1p">Мгновенно отвечают на входящие обращения, квалифицируют лиды и записывают на встречу без участия менеджера</p>
+        <div class="service-tags">
+          <span>WhatsApp</span><span>Telegram</span><span>Web-чат</span><span>Instagram</span>
+        </div>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.1s">
+        <div class="service-icon">🧠</div>
+        <h3 data-i18n="srv.c2h">AI-ассистенты для клиентского сервиса</h3>
+        <p data-i18n="srv.c2p">Знают всё о вашем продукте, отвечают на вопросы на 10+ языках и плавно передают горячих клиентов менеджеру</p>
+        <div class="service-tags">
+          <span data-i18n="srv.tag_multi">Мультиязычность</span><span>GPT-4</span><span data-i18n="srv.tag_crm">CRM-интеграция</span>
+        </div>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.15s">
+        <div class="service-icon">⚡</div>
+        <h3 data-i18n="srv.c3h">Автоматизация бизнес-процессов</h3>
+        <p data-i18n="srv.c3p">Автоматизируем повторяющиеся задачи: документооборот, уведомления, отчёты, follow-up письма и многое другое</p>
+        <div class="service-tags">
+          <span>Make / Zapier</span><span>n8n</span><span data-i18n="srv.tag_api">API-интеграции</span>
+        </div>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.2s">
+        <div class="service-icon">🔗</div>
+        <h3 data-i18n="srv.c4h">Интеграции с CRM и мессенджерами</h3>
+        <p data-i18n="srv.c4p">Подключаем AI к вашим текущим инструментам: HubSpot, Salesforce, Bitrix24, amoCRM и любым мессенджерам</p>
+        <div class="service-tags">
+          <span>HubSpot</span><span>Salesforce</span><span>Bitrix24</span><span>amoCRM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── BENEFITS ─────── -->
+<section class="section" id="benefits">
+  <div class="container">
+    <div class="benefits-wrap">
+      <div class="fade-up">
+        <div class="label-white" data-i18n="ben.label">Результаты</div>
+        <h2 style="font-size:clamp(26px,3vw,40px);font-weight:800;margin-bottom:8px;color:#fff" data-i18n="ben.h2">Что вы получаете</h2>
+        <p style="color:rgba(255,255,255,.6);font-size:16px" data-i18n="ben.sub">Измеримые результаты, которые влияют на прибыль</p>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-check">✓</div>
+            <div>
+              <h4 data-i18n="ben.b1h">До 70% сокращения ручной работы</h4>
+              <p data-i18n="ben.b1p">AI берёт на себя рутинные задачи, освобождая команду для стратегической работы</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check">✓</div>
+            <div>
+              <h4 data-i18n="ben.b2h">В 2–3 раза быстрее обработка заявок</h4>
+              <p data-i18n="ben.b2p">Первый ответ — мгновенно. Квалификация лида — за 2 минуты</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check">✓</div>
+            <div>
+              <h4 data-i18n="ben.b3h">Рост конверсии в клиентов</h4>
+              <p data-i18n="ben.b3p">Ни одной потерянной заявки, автоматические follow-up и прогрев лидов</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check">✓</div>
+            <div>
+              <h4 data-i18n="ben.b4h">Стабильная работа 24/7</h4>
+              <p data-i18n="ben.b4p">Без «человеческого фактора», больничных и выходных — система работает всегда</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:.15s">
+        <div class="metric-cards">
+          <div class="metric-card">
+            <div class="metric-num">70%</div>
+            <div class="metric-label" data-i18n="ben.m1">сокращение ручной работы</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">3×</div>
+            <div class="metric-label" data-i18n="ben.m2">скорость обработки заявок</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">24/7</div>
+            <div class="metric-label" data-i18n="ben.m3">работа без перерывов</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">14</div>
+            <div class="metric-label" data-i18n="ben.m4">дней до результата</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── PROCESS ─────── -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="label" data-i18n="proc.label">Как мы работаем</div>
+      <h2 style="font-size:clamp(26px,3vw,40px);font-weight:800;max-width:520px;margin:0 auto;color:var(--bg-dark)" data-i18n="proc.h2">Простая система внедрения</h2>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">01</div>
+        <h4 data-i18n="proc.s1h">Бесплатный аудит</h4>
+        <p data-i18n="proc.s1p">30 минут — анализируем ваши процессы и находим точки роста</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:.1s">
+        <div class="step-num">02</div>
+        <h4 data-i18n="proc.s2h">Точки автоматизации</h4>
+        <p data-i18n="proc.s2p">Определяем быстрые победы и задачи с максимальным ROI</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:.2s">
+        <div class="step-num">03</div>
+        <h4 data-i18n="proc.s3h">Внедрение AI-решения</h4>
+        <p data-i18n="proc.s3p">За 7–14 дней запускаем работающую систему под ваш бизнес</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:.3s">
+        <div class="step-num">04</div>
+        <h4 data-i18n="proc.s4h">Тест и масштабирование</h4>
+        <p data-i18n="proc.s4p">Оптимизируем результат и масштабируем на все процессы</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── HOW IT WORKS ─────── -->
+<section class="section" id="flow">
+  <div class="container">
+    <div class="fade-up">
+      <div class="label" data-i18n="flow.label">На практике</div>
+      <h2 style="font-size:clamp(26px,3vw,40px);font-weight:800;margin-bottom:8px;color:var(--bg-dark)" data-i18n="flow.h2">Как это работает</h2>
+      <p style="color:var(--muted);font-size:16px;max-width:480px" data-i18n="flow.sub">Типичный сценарий обработки входящей заявки с AI</p>
+    </div>
+    <div class="flow-wrap">
+      <div class="flow-steps fade-up">
+        <div class="flow-item active">
+          <div class="flow-dot">📩</div>
+          <div><h4 data-i18n="flow.f1h">Клиент оставляет заявку</h4><p data-i18n="flow.f1p">Любой канал: сайт, WhatsApp, Instagram</p></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-item active">
+          <div class="flow-dot">⚡</div>
+          <div><h4 data-i18n="flow.f2h">AI-бот отвечает мгновенно</h4><p data-i18n="flow.f2p">Приветствие и сбор информации — за секунды</p></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-item active">
+          <div class="flow-dot">❓</div>
+          <div><h4 data-i18n="flow.f3h">Квалификация лида</h4><p data-i18n="flow.f3p">Задаёт нужные вопросы, оценивает потребность</p></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-item active">
+          <div class="flow-dot">📅</div>
+          <div><h4 data-i18n="flow.f4h">Запись на встречу</h4><p data-i18n="flow.f4p">Автоматически бронирует слот в календаре</p></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-item">
+          <div class="flow-dot">🔥</div>
+          <div><h4 data-i18n="flow.f5h">Менеджер получает горячего клиента</h4><p data-i18n="flow.f5p">С полным досье — без лишних вопросов</p></div>
+        </div>
+      </div>
+      <div class="flow-result fade-up" style="transition-delay:.2s">
+        <div class="big">🎯</div>
+        <h3 data-i18n="flow.res_h">Ни одной потерянной заявки</h3>
+        <p data-i18n="flow.res_p">Система работает 24/7, обрабатывает любое количество обращений одновременно и никогда не забывает о follow-up</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── WHO ─────── -->
+<section class="section" id="who">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="label" data-i18n="who.label">Кому подходит</div>
+      <h2 style="font-size:clamp(26px,3vw,40px);font-weight:800;max-width:520px;margin:0 auto;color:var(--bg-dark)" data-i18n="who.h2">Кому это подходит</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card fade-up">
+        <div class="who-icon">🏢</div>
+        <h3 data-i18n="who.c1h">Малый и средний бизнес</h3>
+        <p data-i18n="who.c1p">Компании, которые хотят масштабироваться без пропорционального роста штата</p>
+      </div>
+      <div class="who-card fade-up" style="transition-delay:.1s">
+        <div class="who-icon">📨</div>
+        <h3 data-i18n="who.c2h">Компании с входящим потоком</h3>
+        <p data-i18n="who.c2p">Бизнесы, где критически важна скорость обработки заявок и первого ответа</p>
+      </div>
+      <div class="who-card fade-up" style="transition-delay:.2s">
+        <div class="who-icon">🌐</div>
+        <h3 data-i18n="who.c3h">Услуги, недвижимость, e-commerce</h3>
+        <p data-i18n="who.c3p">Сферы с высоким потоком клиентов: образование, медицина, FinTech, retail</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── CTA ─────── -->
+<section class="section" id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="fade-up">
+        <div class="label-white" data-i18n="cta.label">Бесплатно</div>
+        <h2 style="font-size:clamp(26px,3vw,40px);font-weight:800;margin-bottom:8px;color:#fff" data-i18n="cta.h2">Получите план внедрения AI для вашего бизнеса</h2>
+        <p style="color:rgba(255,255,255,.6);font-size:16px" data-i18n="cta.sub">На бесплатном аудите вы получите:</p>
+        <ul class="cta-list">
+          <li data-i18n="cta.l1">Анализ текущих процессов</li>
+          <li data-i18n="cta.l2">Список задач для автоматизации</li>
+          <li data-i18n="cta.l3">Расчёт потенциальной экономии</li>
+          <li data-i18n="cta.l4">План внедрения AI под ваш бизнес</li>
+        </ul>
+        <a href="#audit" class="btn btn-green btn-lg" data-i18n="cta.btn">Записаться на аудит →</a>
+      </div>
+      <div class="fade-up" style="transition-delay:.15s">
+        <div class="cta-form-card">
+          <h3 data-i18n="form.h3">Получить бесплатный аудит</h3>
+          <p class="sub" data-i18n="form.sub">Без обязательств • 30 минут • конкретный план внедрения</p>
+          <form id="ctaForm" novalidate>
+            <div class="form-group">
+              <label data-i18n="form.name_label">Ваше имя</label>
+              <input name="name" type="text" required data-i18n-ph="form.name_ph" placeholder="Иван Иванов"/>
+            </div>
+            <div class="form-group">
+              <label data-i18n="form.phone_label">Номер телефона / WhatsApp</label>
+              <input name="phone" type="tel" required data-i18n-ph="form.phone_ph" placeholder="+971 50 123 4567"/>
+            </div>
+            <label class="form-privacy">
+              <input type="checkbox" name="privacy_consent" value="1"/>
+              <span data-i18n="form.privacy_check">Я даю согласие на обработку персональных данных</span>
+            </label>
+            <button type="submit" class="btn btn-green btn-lg btn-block">
+              <span class="btn-text" data-i18n="form.btn">Получить бесплатный аудит →</span>
+              <span class="spinner"></span>
+            </button>
+            <p class="form-note" data-i18n="form.note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Данные не передаются третьим лицам.</p>
+          </form>
+          <div class="form-success" style="display:none">
+            <div class="icon">✅</div>
+            <h4 style="color:#fff" data-i18n="form.ok_h">Заявка получена!</h4>
+            <p data-i18n="form.ok_p">Переводим вас на следующий шаг…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── ABOUT ─────── -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-wrap">
+      <div class="about-text fade-up">
+        <div class="label" data-i18n="about.label">О нас</div>
+        <h2 style="font-size:clamp(26px,3vw,40px);font-weight:800;margin-bottom:20px;color:var(--bg-dark)" data-i18n="about.h2">Подход, ориентированный на результат</h2>
+        <p data-i18n="about.p1">Помогаем бизнесам внедрять AI не ради «технологий», а ради прибыли. Глубокое понимание маркетинга и бизнес-процессов позволяет находить точки роста и автоматизировать именно то, что даёт результат.</p>
+        <p style="margin-top:12px" data-i18n="about.p2">Работаем с компаниями в ОАЭ, Саудовской Аравии, Египте и других рынках MENA. Понимаем местную специфику и требования рынка.</p>
+        <div class="focus-badge">🎯 <span data-i18n="about.focus">Фокус: ROI, а не «модные технологии»</span></div>
+      </div>
+      <div class="about-visual fade-up" style="transition-delay:.15s">
+        <div class="about-item">
+          <div class="about-num">70%</div>
+          <p data-i18n="about.a1">среднее сокращение операционных задач после внедрения AI</p>
+        </div>
+        <div class="about-item">
+          <div class="about-num">7–14</div>
+          <p data-i18n="about.a2">дней от аудита до работающей системы в вашем бизнесе</p>
+        </div>
+        <div class="about-item">
+          <div class="about-num">UAE</div>
+          <p data-i18n="about.a3">фокус на рынке ОАЭ и MENA с пониманием местной специфики</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── FAQ ─────── -->
+<section class="section-sm" id="faq">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="label" data-i18n="faq.label">FAQ</div>
+      <h2 style="font-size:clamp(24px,2.5vw,36px);font-weight:800;margin-bottom:0;color:var(--bg-dark)" data-i18n="faq.h2">Часто задаваемые вопросы</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <button class="faq-q"><span data-i18n="faq.q1">Это сложно внедрить в существующий бизнес?</span><span class="icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a1">Нет. Мы работаем с вашими текущими инструментами и не требуем переписывать процессы. Интеграция проходит параллельно рабочему процессу без остановки бизнеса. Типичное время внедрения — 7–14 дней.</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q"><span data-i18n="faq.q2">Сколько времени занимает запуск?</span><span class="icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a2">Первый работающий AI-инструмент запускается за 7–14 дней после аудита. Простые чат-боты — за 3–5 дней. Сложные интеграции с CRM и кастомной логикой — до 21 дня.</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q"><span data-i18n="faq.q3">Нужно ли заменять сотрудников?</span><span class="icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a3">Нет. AI дополняет сотрудников, а не заменяет их. Он берёт на себя рутину: первичный ответ, квалификацию, напоминания. Люди занимаются тем, что действительно важно — переговорами и продажами.</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q"><span data-i18n="faq.q4">Сколько это стоит?</span><span class="icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a4">Стоимость зависит от сложности задачи и объёма интеграций. На бесплатном аудите мы анализируем ваш бизнес и предлагаем конкретное решение с чётким расчётом ROI. Аудит — бесплатно и без обязательств.</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q"><span data-i18n="faq.q5">Как AI общается на арабском и других языках?</span><span class="icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a5">Современные AI-модели (GPT-4, Claude) поддерживают 50+ языков, включая арабский, хинди, урду. AI автоматически определяет язык клиента и общается на нём. Это ключевое преимущество для рынка ОАЭ с многонациональной аудиторией.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── FOOTER CTA ─────── -->
+<section id="footer-cta">
+  <div class="container" style="position:relative">
+    <div class="fade-up">
+      <div class="tag" style="margin:0 auto 24px;width:fit-content" data-i18n="ftcta.tag">🚀 Начните автоматизацию уже сейчас</div>
+      <h2 data-i18n="ftcta.h2">Получите чёткий план внедрения AI<br/>и увеличьте эффективность бизнеса</h2>
+      <p data-i18n="ftcta.sub">Бесплатный аудит • Без обязательств • 30 минут</p>
+      <a href="#audit" class="btn btn-green btn-lg" data-i18n="ftcta.btn">Получить бесплатный аудит →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── FOOTER ─────── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">AutoBiz<span>Lab</span></div>
+      <div class="footer-links">
+        <a href="#services" data-i18n="footer.srv">Услуги</a>
+        <a href="#process" data-i18n="footer.proc">Процесс</a>
+        <a href="#faq" data-i18n="footer.faq">FAQ</a>
+        <a href="/en/privacy" id="footer-privacy-link" data-i18n="footer.privacy">Privacy</a>
+      </div>
+      <div class="footer-copy">© 2025 AutoBizLab. <span data-i18n="footer.rights">All rights reserved.</span></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─────────────────────────────────────────────
+// Translations
+// ─────────────────────────────────────────────
+const i18n = {
+  ru: {
+    'nav.cta': 'Бесплатный аудит',
+    'header.logo_sub': 'AI-автоматизация бизнеса',
+    'header.offer': 'Внедряем AI-агентов и чат-ботов, которые автоматизируют до 70% задач и увеличивают прибыль за 7–14 дней',
+    'hero.badge': 'ОАЭ & MENA • Работаем 24/7',
+    'hero.h1': 'Внедрим AI-агентов и чат-ботов, которые <span class="text-grad">автоматизируют до 70%</span> задач в вашем бизнесе',
+    'hero.sub': 'Помогаем компаниям в ОАЭ и MENA ускорить обработку заявок, снизить нагрузку на сотрудников и увеличить прибыль за 7–14 дней',
+    'hero.c1': 'До 70% сокращения ручной работы и операционных расходов',
+    'hero.c2': 'В 2–3 раза быстрее обработка заявок и рост конверсии',
+    'hero.c3': 'Запуск за 7–14 дней — без сложной разработки',
+    'hero.c4': 'Работа 24/7 на Arabic, English, Russian и 50+ языках',
+    'hero.stat1': 'сокращение ручной работы',
+    'hero.stat2': 'дней до запуска',
+    'hero.stat3': 'работа без остановок',
+    'form.urgency': 'Оставьте заявку сейчас и получите <strong>бесплатный аудит бизнеса</strong> с конкретным планом автоматизации в подарок!',
+    'form.h3': 'Получить бесплатный аудит',
+    'form.sub': 'Без обязательств • 30 минут • конкретный план внедрения',
+    'form.name_label': 'Ваше имя',
+    'form.name_ph': 'Иван Иванов',
+    'form.phone_label': 'Номер телефона / WhatsApp',
+    'form.phone_ph': '+971 50 123 4567',
+    'form.btn': 'Оставить заявку на аудит →',
+    'form.note': 'Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Данные не передаются третьим лицам.',
+    'form.privacy_check': 'Я даю согласие на обработку персональных данных',
+    'form.privacy_required': 'Подтвердите согласие на обработку персональных данных',
+    'form.ok_h': 'Заявка получена!',
+    'form.ok_p': 'Переводим вас на следующий шаг…',
+    'pain.label': 'Проблема',
+    'pain.h2': 'Вы теряете деньги из-за ручных процессов',
+    'pain.sub': 'Каждый день бизнес теряет клиентов и время из-за отсутствия автоматизации',
+    'pain.i1h': 'Долгая обработка заявок',
+    'pain.i1p': 'Клиенты ждут ответа часами, а конкуренты уже закрыли сделку',
+    'pain.i2h': 'Менеджеры не успевают',
+    'pain.i2p': 'Рутинные вопросы «съедают» рабочее время, нет сил на важное',
+    'pain.i3h': 'Клиенты уходят к конкурентам',
+    'pain.i3p': 'В ОАЭ скорость = деньги. Кто отвечает быстрее — зарабатывает больше',
+    'pain.i4h': 'Рутина пожирает ресурсы',
+    'pain.i4p': 'Повторяющиеся задачи отнимают до 70% времени команды',
+    'pain.cta_text': '👉 В ОАЭ скорость ответа определяет, кто получит клиента. AI отвечает мгновенно — 24/7, без выходных.',
+    'pain.cta_btn': 'Решить это сейчас',
+    'srv.label': 'Решения',
+    'srv.h2': 'Мы внедряем AI, который работает за вас 24/7',
+    'srv.sub': 'Без сложной разработки и долгих внедрений — запускаем готовое решение',
+    'srv.c1h': 'AI-чат-боты для обработки заявок',
+    'srv.c1p': 'Мгновенно отвечают на входящие обращения, квалифицируют лиды и записывают на встречу без участия менеджера',
+    'srv.c2h': 'AI-ассистенты для клиентского сервиса',
+    'srv.c2p': 'Знают всё о вашем продукте, отвечают на вопросы на 10+ языках и плавно передают горячих клиентов менеджеру',
+    'srv.c3h': 'Автоматизация бизнес-процессов',
+    'srv.c3p': 'Автоматизируем повторяющиеся задачи: документооборот, уведомления, отчёты, follow-up письма и многое другое',
+    'srv.c4h': 'Интеграции с CRM и мессенджерами',
+    'srv.c4p': 'Подключаем AI к вашим текущим инструментам: HubSpot, Salesforce, Bitrix24, amoCRM и любым мессенджерам',
+    'srv.tag_multi': 'Мультиязычность',
+    'srv.tag_crm': 'CRM-интеграция',
+    'srv.tag_api': 'API-интеграции',
+    'ben.label': 'Результаты',
+    'ben.h2': 'Что вы получаете',
+    'ben.sub': 'Измеримые результаты, которые влияют на прибыль',
+    'ben.b1h': 'До 70% сокращения ручной работы',
+    'ben.b1p': 'AI берёт на себя рутинные задачи, освобождая команду для стратегической работы',
+    'ben.b2h': 'В 2–3 раза быстрее обработка заявок',
+    'ben.b2p': 'Первый ответ — мгновенно. Квалификация лида — за 2 минуты',
+    'ben.b3h': 'Рост конверсии в клиентов',
+    'ben.b3p': 'Ни одной потерянной заявки, автоматические follow-up и прогрев лидов',
+    'ben.b4h': 'Стабильная работа 24/7',
+    'ben.b4p': 'Без «человеческого фактора», больничных и выходных — система работает всегда',
+    'ben.m1': 'сокращение ручной работы',
+    'ben.m2': 'скорость обработки заявок',
+    'ben.m3': 'работа без перерывов',
+    'ben.m4': 'дней до результата',
+    'proc.label': 'Как мы работаем',
+    'proc.h2': 'Простая система внедрения',
+    'proc.s1h': 'Бесплатный аудит',
+    'proc.s1p': '30 минут — анализируем ваши процессы и находим точки роста',
+    'proc.s2h': 'Точки автоматизации',
+    'proc.s2p': 'Определяем быстрые победы и задачи с максимальным ROI',
+    'proc.s3h': 'Внедрение AI-решения',
+    'proc.s3p': 'За 7–14 дней запускаем работающую систему под ваш бизнес',
+    'proc.s4h': 'Тест и масштабирование',
+    'proc.s4p': 'Оптимизируем результат и масштабируем на все процессы',
+    'flow.label': 'На практике',
+    'flow.h2': 'Как это работает',
+    'flow.sub': 'Типичный сценарий обработки входящей заявки с AI',
+    'flow.f1h': 'Клиент оставляет заявку',
+    'flow.f1p': 'Любой канал: сайт, WhatsApp, Instagram',
+    'flow.f2h': 'AI-бот отвечает мгновенно',
+    'flow.f2p': 'Приветствие и сбор информации — за секунды',
+    'flow.f3h': 'Квалификация лида',
+    'flow.f3p': 'Задаёт нужные вопросы, оценивает потребность',
+    'flow.f4h': 'Запись на встречу',
+    'flow.f4p': 'Автоматически бронирует слот в календаре',
+    'flow.f5h': 'Менеджер получает горячего клиента',
+    'flow.f5p': 'С полным досье — без лишних вопросов',
+    'flow.res_h': 'Ни одной потерянной заявки',
+    'flow.res_p': 'Система работает 24/7, обрабатывает любое количество обращений одновременно и никогда не забывает о follow-up',
+    'who.label': 'Кому подходит',
+    'who.h2': 'Кому это подходит',
+    'who.c1h': 'Малый и средний бизнес',
+    'who.c1p': 'Компании, которые хотят масштабироваться без пропорционального роста штата',
+    'who.c2h': 'Компании с входящим потоком',
+    'who.c2p': 'Бизнесы, где критически важна скорость обработки заявок и первого ответа',
+    'who.c3h': 'Услуги, недвижимость, e-commerce',
+    'who.c3p': 'Сферы с высоким потоком клиентов: образование, медицина, FinTech, retail',
+    'cta.label': 'Бесплатно',
+    'cta.h2': 'Получите план внедрения AI для вашего бизнеса',
+    'cta.sub': 'На бесплатном аудите вы получите:',
+    'cta.l1': 'Анализ текущих процессов',
+    'cta.l2': 'Список задач для автоматизации',
+    'cta.l3': 'Расчёт потенциальной экономии',
+    'cta.l4': 'План внедрения AI под ваш бизнес',
+    'cta.btn': 'Записаться на аудит →',
+    'about.label': 'О нас',
+    'about.h2': 'Подход, ориентированный на результат',
+    'about.p1': 'Помогаем бизнесам внедрять AI не ради «технологий», а ради прибыли. Глубокое понимание маркетинга и бизнес-процессов позволяет находить точки роста и автоматизировать именно то, что даёт результат.',
+    'about.p2': 'Работаем с компаниями в ОАЭ, Саудовской Аравии, Египте и других рынках MENA. Понимаем местную специфику и требования рынка.',
+    'about.focus': 'Фокус: ROI, а не «модные технологии»',
+    'about.a1': 'среднее сокращение операционных задач после внедрения AI',
+    'about.a2': 'дней от аудита до работающей системы в вашем бизнесе',
+    'about.a3': 'фокус на рынке ОАЭ и MENA с пониманием местной специфики',
+    'faq.label': 'FAQ',
+    'faq.h2': 'Часто задаваемые вопросы',
+    'faq.q1': 'Это сложно внедрить в существующий бизнес?',
+    'faq.a1': 'Нет. Мы работаем с вашими текущими инструментами и не требуем переписывать процессы. Интеграция проходит параллельно рабочему процессу без остановки бизнеса. Типичное время внедрения — 7–14 дней.',
+    'faq.q2': 'Сколько времени занимает запуск?',
+    'faq.a2': 'Первый работающий AI-инструмент запускается за 7–14 дней после аудита. Простые чат-боты — за 3–5 дней. Сложные интеграции с CRM и кастомной логикой — до 21 дня.',
+    'faq.q3': 'Нужно ли заменять сотрудников?',
+    'faq.a3': 'Нет. AI дополняет сотрудников, а не заменяет их. Он берёт на себя рутину: первичный ответ, квалификацию, напоминания. Люди занимаются тем, что действительно важно — переговорами и продажами.',
+    'faq.q4': 'Сколько это стоит?',
+    'faq.a4': 'Стоимость зависит от сложности задачи и объёма интеграций. На бесплатном аудите мы анализируем ваш бизнес и предлагаем конкретное решение с чётким расчётом ROI. Аудит — бесплатно и без обязательств.',
+    'faq.q5': 'Как AI общается на арабском и других языках?',
+    'faq.a5': 'Современные AI-модели (GPT-4, Claude) поддерживают 50+ языков, включая арабский, хинди, урду. AI автоматически определяет язык клиента и общается на нём. Это ключевое преимущество для рынка ОАЭ с многонациональной аудиторией.',
+    'ftcta.tag': '🚀 Начните автоматизацию уже сейчас',
+    'ftcta.h2': 'Получите чёткий план внедрения AI<br/>и увеличьте эффективность бизнеса',
+    'ftcta.sub': 'Бесплатный аудит • Без обязательств • 30 минут',
+    'ftcta.btn': 'Получить бесплатный аудит →',
+    'footer.srv': 'Услуги',
+    'footer.proc': 'Процесс',
+    'footer.faq': 'FAQ',
+    'footer.contact': 'Контакты',
+    'footer.privacy': 'Политика конфиденциальности',
+    'footer.rights': 'Все права защищены.'
+  },
+  en: {
+    'nav.cta': 'Free Audit',
+    'header.logo_sub': 'AI Business Automation',
+    'header.offer': 'We deploy AI agents & chatbots that automate up to 70% of tasks and grow revenue in 7–14 days',
+    'hero.badge': 'UAE & MENA • Working 24/7',
+    'hero.h1': 'We deploy AI agents & chatbots that <span class="text-grad">automate up to 70%</span> of your business tasks',
+    'hero.sub': 'We help companies in UAE and MENA speed up lead processing, reduce team workload, and grow revenue in 7–14 days',
+    'hero.c1': 'Up to 70% reduction in manual work and operational costs',
+    'hero.c2': '2–3× faster lead processing and higher conversion rates',
+    'hero.c3': 'Launch in 7–14 days — no complex development needed',
+    'hero.c4': 'Works 24/7 in Arabic, English, Russian and 50+ languages',
+    'hero.stat1': 'manual work reduction',
+    'hero.stat2': 'days to launch',
+    'hero.stat3': 'non-stop operation',
+    'form.urgency': 'Leave a request now and get a <strong>free business audit</strong> with a concrete automation plan as a gift!',
+    'form.h3': 'Get a Free Business Audit',
+    'form.sub': 'No commitment • 30 minutes • concrete implementation plan',
+    'form.name_label': 'Your Name',
+    'form.name_ph': 'John Smith',
+    'form.phone_label': 'Phone / WhatsApp',
+    'form.phone_ph': '+971 50 123 4567',
+    'form.btn': 'Get Free Audit →',
+    'form.note': 'By clicking the button, you agree to our privacy policy. Your data is never shared with third parties.',
+    'form.privacy_check': 'I consent to the processing of my personal data',
+    'form.privacy_required': 'Please confirm consent to process your personal data',
+    'form.ok_h': 'Request received!',
+    'form.ok_p': 'Taking you to the next step…',
+    'pain.label': 'The Problem',
+    'pain.h2': 'You\'re losing money to manual processes',
+    'pain.sub': 'Every day businesses lose clients and time due to lack of automation',
+    'pain.i1h': 'Slow lead response',
+    'pain.i1p': 'Clients wait hours for a reply while competitors close the deal',
+    'pain.i2h': 'Managers can\'t keep up',
+    'pain.i2p': 'Routine questions eat up working time, leaving no capacity for what matters',
+    'pain.i3h': 'Clients go to competitors',
+    'pain.i3p': 'In UAE, speed = money. Whoever answers faster earns more',
+    'pain.i4h': 'Routine consumes resources',
+    'pain.i4p': 'Repetitive tasks take up to 70% of the team\'s time',
+    'pain.cta_text': '👉 In UAE, response speed determines who gets the client. AI responds instantly — 24/7, without weekends.',
+    'pain.cta_btn': 'Fix This Now',
+    'srv.label': 'Solutions',
+    'srv.h2': 'We deploy AI that works for you 24/7',
+    'srv.sub': 'No complex development or lengthy implementations — we launch ready solutions',
+    'srv.c1h': 'AI Chatbots for Lead Processing',
+    'srv.c1p': 'Instantly respond to inbound requests, qualify leads, and book meetings — no manager needed',
+    'srv.c2h': 'AI Assistants for Customer Service',
+    'srv.c2p': 'Know everything about your product, answer in 10+ languages, and smoothly hand off hot leads to your team',
+    'srv.c3h': 'Business Process Automation',
+    'srv.c3p': 'Automate repetitive tasks: document flow, notifications, reports, follow-up emails, and much more',
+    'srv.c4h': 'CRM & Messenger Integrations',
+    'srv.c4p': 'Connect AI to your current tools: HubSpot, Salesforce, Bitrix24, amoCRM, and any messengers',
+    'srv.tag_multi': 'Multilingual',
+    'srv.tag_crm': 'CRM Integration',
+    'srv.tag_api': 'API Integrations',
+    'ben.label': 'Results',
+    'ben.h2': 'What You Get',
+    'ben.sub': 'Measurable results that directly impact your revenue',
+    'ben.b1h': 'Up to 70% reduction in manual work',
+    'ben.b1p': 'AI takes over routine tasks, freeing your team for strategic work',
+    'ben.b2h': '2–3× faster lead processing',
+    'ben.b2p': 'First response — instant. Lead qualification — in 2 minutes',
+    'ben.b3h': 'Higher conversion rates',
+    'ben.b3p': 'Zero lost leads, automatic follow-ups and lead nurturing',
+    'ben.b4h': 'Stable 24/7 operation',
+    'ben.b4p': 'No human factor, sick days or holidays — the system always works',
+    'ben.m1': 'manual work reduction',
+    'ben.m2': 'faster lead processing',
+    'ben.m3': 'round-the-clock operation',
+    'ben.m4': 'days to results',
+    'proc.label': 'How We Work',
+    'proc.h2': 'Simple Implementation System',
+    'proc.s1h': 'Free Audit',
+    'proc.s1p': '30 minutes — we analyse your processes and find growth points',
+    'proc.s2h': 'Automation Points',
+    'proc.s2p': 'We identify quick wins and tasks with maximum ROI',
+    'proc.s3h': 'AI Solution Deployment',
+    'proc.s3p': 'In 7–14 days we launch a working system tailored to your business',
+    'proc.s4h': 'Test & Scale',
+    'proc.s4p': 'We optimise results and scale across all processes',
+    'flow.label': 'In Practice',
+    'flow.h2': 'How It Works',
+    'flow.sub': 'Typical scenario for handling an inbound request with AI',
+    'flow.f1h': 'Client submits a request',
+    'flow.f1p': 'Any channel: website, WhatsApp, Instagram',
+    'flow.f2h': 'AI bot responds instantly',
+    'flow.f2p': 'Greeting and info gathering — in seconds',
+    'flow.f3h': 'Lead qualification',
+    'flow.f3p': 'Asks the right questions, assesses the need',
+    'flow.f4h': 'Books a meeting',
+    'flow.f4p': 'Automatically reserves a calendar slot',
+    'flow.f5h': 'Manager gets a hot lead',
+    'flow.f5p': 'With a full brief — no extra questions needed',
+    'flow.res_h': 'Zero lost leads',
+    'flow.res_p': 'The system works 24/7, handles any volume of requests simultaneously, and never forgets a follow-up',
+    'who.label': 'Who It\'s For',
+    'who.h2': 'Who This Is For',
+    'who.c1h': 'Small & Medium Business',
+    'who.c1p': 'Companies that want to scale without proportionally growing their team',
+    'who.c2h': 'High Inbound Volume Companies',
+    'who.c2p': 'Businesses where speed of lead processing and first response is critical',
+    'who.c3h': 'Services, Real Estate, E-commerce',
+    'who.c3p': 'Industries with high client flow: education, healthcare, FinTech, retail',
+    'cta.label': 'Free of Charge',
+    'cta.h2': 'Get an AI Implementation Plan for Your Business',
+    'cta.sub': 'At the free audit you\'ll receive:',
+    'cta.l1': 'Analysis of current processes',
+    'cta.l2': 'List of tasks ready for automation',
+    'cta.l3': 'Potential savings calculation',
+    'cta.l4': 'AI implementation plan tailored to your business',
+    'cta.btn': 'Book an Audit →',
+    'about.label': 'About Us',
+    'about.h2': 'Results-Driven Approach',
+    'about.p1': 'We help businesses implement AI not for the sake of technology, but for profit. Deep understanding of marketing and business processes helps us find growth points and automate exactly what delivers results.',
+    'about.p2': 'We work with companies in UAE, Saudi Arabia, Egypt, and other MENA markets. We understand local specifics and market requirements.',
+    'about.focus': 'Focus: ROI, not buzzwords',
+    'about.a1': 'average reduction in operational tasks after AI implementation',
+    'about.a2': 'days from audit to a working system in your business',
+    'about.a3': 'focus on the UAE and MENA market with deep local expertise',
+    'faq.label': 'FAQ',
+    'faq.h2': 'Frequently Asked Questions',
+    'faq.q1': 'Is it complicated to implement in an existing business?',
+    'faq.a1': 'No. We work with your current tools and don\'t require rewriting processes. Integration happens in parallel with your workflow without stopping the business. Typical implementation time — 7–14 days.',
+    'faq.q2': 'How long does the launch take?',
+    'faq.a2': 'The first working AI tool is launched within 7–14 days after the audit. Simple chatbots — in 3–5 days. Complex CRM integrations with custom logic — up to 21 days.',
+    'faq.q3': 'Do we need to replace employees?',
+    'faq.a3': 'No. AI supplements employees, not replaces them. It handles routine: initial response, qualification, reminders. People focus on what truly matters — negotiations and sales.',
+    'faq.q4': 'How much does it cost?',
+    'faq.a4': 'The cost depends on task complexity and integration scope. At the free audit, we analyse your business and propose a concrete solution with a clear ROI calculation. The audit is free and no-commitment.',
+    'faq.q5': 'How does AI communicate in Arabic and other languages?',
+    'faq.a5': 'Modern AI models (GPT-4, Claude) support 50+ languages including Arabic, Hindi, Urdu. AI automatically detects the client\'s language and communicates in it. This is a key advantage for the UAE market with its multinational audience.',
+    'ftcta.tag': '🚀 Start Automation Today',
+    'ftcta.h2': 'Get a Clear AI Implementation Plan<br/>and Boost Your Business Efficiency',
+    'ftcta.sub': 'Free Audit • No Commitment • 30 Minutes',
+    'ftcta.btn': 'Get Free Audit →',
+    'footer.srv': 'Services',
+    'footer.proc': 'Process',
+    'footer.faq': 'FAQ',
+    'footer.contact': 'Contact',
+    'footer.privacy': 'Privacy policy',
+    'footer.rights': 'All rights reserved.'
+  }
+};
+
+// ─────────────────────────────────────────────
+// Language switcher
+// ─────────────────────────────────────────────
+let currentLang = localStorage.getItem('lang') || 'ru';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  const t = i18n[lang];
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+    btn.setAttribute('aria-pressed', btn.dataset.lang === lang);
+  });
+  const priv = document.getElementById('footer-privacy-link');
+  if (priv) priv.setAttribute('href', lang === 'ru' ? '/ru/privacy' : '/en/privacy');
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+applyLang(currentLang);
+
+// ─────────────────────────────────────────────
+// Scroll effects
+// ─────────────────────────────────────────────
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ─────────────────────────────────────────────
+// FAQ accordion
+// ─────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ─────────────────────────────────────────────
+// Toast helper
+// ─────────────────────────────────────────────
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ─────────────────────────────────────────────
+// Collect page meta for backend
+// ─────────────────────────────────────────────
+function getMeta() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    referrer: document.referrer || '',
+    utm_source: params.get('utm_source') || '',
+    utm_medium: params.get('utm_medium') || '',
+    utm_campaign: params.get('utm_campaign') || '',
+    screen_resolution: `${screen.width}x${screen.height}`,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+    language: currentLang,
+    page_time_seconds: Math.round((Date.now() - pageLoadTime) / 1000)
+  };
+}
+const pageLoadTime = Date.now();
+
+// ─────────────────────────────────────────────
+// Quick form submit → /api/leads/quick → redirect
+// ─────────────────────────────────────────────
+async function submitQuickForm(form, btn) {
+  const strings = i18n[currentLang] || i18n.ru;
+  const name  = form.querySelector('[name=name]').value.trim();
+  const phone = form.querySelector('[name=phone]').value.trim();
+  const consent = form.querySelector('[name=privacy_consent]');
+  if (!name || !phone) {
+    showToast(currentLang === 'ru' ? '⚠️ Заполните все поля' : '⚠️ Please fill all fields');
+    return;
+  }
+  if (!consent || !consent.checked) {
+    showToast('⚠️ ' + (strings['form.privacy_required'] || ''));
+    return;
+  }
+
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  const payload = { name, phone, privacy_consent: true, ...getMeta() };
+
+  try {
+    const res = await fetch('/api/leads/quick', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      let msg = currentLang === 'ru' ? 'Ошибка отправки' : 'Submission error';
+      const d = data.detail;
+      if (typeof d === 'string') msg += ' (' + d + ')';
+      else if (Array.isArray(d) && d[0] && d[0].msg) msg += ' (' + d[0].msg + ')';
+      showToast(msg);
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      return;
+    }
+    const leadId = data.id || '';
+
+    // Show success state
+    form.style.display = 'none';
+    const card = form.closest('.form-card') || form.closest('.cta-form-card');
+    const success = card && card.querySelector('.form-success');
+    if (success) success.style.display = 'block';
+
+    // Redirect to /enquire with pre-filled data
+    setTimeout(() => {
+      const params = new URLSearchParams({ name, phone, lead_id: leadId, lang: currentLang });
+      window.location.href = '/enquire?' + params.toString();
+    }, 1200);
+  } catch(e) {
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    // On error — still redirect (don't block the user)
+    const params = new URLSearchParams({ name, phone, lang: currentLang });
+    window.location.href = '/enquire?' + params.toString();
+  }
+}
+
+document.querySelectorAll('#quickForm, #ctaForm').forEach(form => {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    submitQuickForm(form, btn);
+  });
+});
+</script>
+</body>
+</html>

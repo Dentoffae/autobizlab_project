@@ -1,0 +1,24 @@
+version: 0.1
+log:
+  level: info
+
+storage:
+  filesystem:
+    rootdirectory: /data
+  delete:
+    enabled: true
+
+auth:
+  htpasswd:
+    realm: AutoBizLab Registry
+    path: /auth/htpasswd
+
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [nosniff]
+    Access-Control-Allow-Origin: ["*"]
+    Access-Control-Allow-Methods: [HEAD, GET, OPTIONS, DELETE, PUT, POST, PATCH]
+    Access-Control-Allow-Headers: [Authorization, Accept, Cache-Control, Content-Type]
+    Access-Control-Expose-Headers: [Docker-Content-Digest]
+    Access-Control-Allow-Credentials: ["true"]

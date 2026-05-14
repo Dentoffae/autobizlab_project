@@ -1,0 +1,15 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "AutoBizLab PostgreSQL",
+      "Group": "Servers",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "autobizlab_db",
+      "Username": "admin",
+      "Password": "ZvTVm1z64cCf",
+      "SSLMode": "prefer",
+      "SavePassword": true
+    }
+  }
+}

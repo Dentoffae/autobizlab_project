@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AutoBizLab — Заявка на аудит | Enquiry Form</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --bg:#FFFFFF;--bg2:#F5F7FA;--bg3:#EBF0F8;
+      --bg-dark:#041A40;--border:#DDE3EE;
+      --accent:#28A634;--accent2:#0D83EA;
+      --text:#1C2536;--muted:#5A6478;--faint:#9AA3B2;
+      --success:#28A634;--error:#E53935;
+      --grad:linear-gradient(135deg,#28A634 0%,#0D83EA 100%);
+      --radius:10px;--shadow:0 4px 24px rgba(4,26,64,.1);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg2);color:var(--text);min-height:100vh;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+
+    /* ── Header ── */
+    header{padding:0 24px;background:var(--bg-dark);border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:50}
+    .nav{max-width:960px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{font-size:20px;font-weight:800;color:#fff}
+    .logo span{color:var(--accent)}
+    .back-link{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.55);font-size:13px;transition:color .2s}
+    .back-link:hover{color:#fff}
+    .lang-switcher{display:flex;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;overflow:hidden}
+    .lang-btn{background:none;border:none;padding:6px 12px;color:rgba(255,255,255,.6);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+    .lang-btn.active{background:var(--accent);color:#fff}
+
+    /* ── Page shell ── */
+    .page{max-width:960px;margin:0 auto;padding:40px 24px 80px}
+
+    /* ── Page hero ── */
+    .page-hero{text-align:center;margin-bottom:40px}
+    .step-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:40px;background:rgba(40,166,52,.1);border:1px solid rgba(40,166,52,.25);color:var(--accent);font-size:13px;font-weight:600;margin-bottom:16px}
+    h1{font-size:clamp(22px,3vw,36px);font-weight:800;margin-bottom:10px;color:var(--bg-dark)}
+    .page-sub{font-size:15px;color:var(--muted);max-width:480px;margin:0 auto}
+
+    /* ── Progress ── */
+    .progress-bar{display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto 40px;max-width:400px}
+    .prog-step{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;position:relative}
+    .prog-step:not(:last-child)::after{content:'';position:absolute;top:15px;left:calc(50% + 15px);right:calc(-50% + 15px);height:2px;background:var(--border)}
+    .prog-step.done:not(:last-child)::after,.prog-step.active:not(:last-child)::after{background:var(--accent)}
+    .prog-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid var(--border);background:var(--bg3);color:var(--muted);position:relative;z-index:1}
+    .prog-step.done .prog-dot{background:var(--accent);border-color:var(--accent);color:#fff}
+    .prog-step.active .prog-dot{border-color:var(--accent);color:var(--accent);background:rgba(40,166,52,.1)}
+    .prog-label{font-size:11px;color:var(--faint);text-align:center}
+
+    /* ── Grid layout ── */
+    .form-grid{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start}
+    @media(max-width:720px){.form-grid{grid-template-columns:1fr}}
+
+    /* ── Card ── */
+    .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 2px 16px rgba(4,26,64,.06)}
+    .card + .card{margin-top:20px}
+    .card-title{font-size:15px;font-weight:700;color:var(--bg-dark);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+    .card-title .icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,rgba(40,166,52,.12),rgba(13,131,234,.08));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+
+    /* ── Form elements ── */
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:520px){.field-row{grid-template-columns:1fr}}
+    .field{margin-bottom:14px}
+    .field:last-child{margin-bottom:0}
+    .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+    .field input,.field select,.field textarea{
+      width:100%;background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;
+      padding:12px 14px;color:var(--text);font-size:14px;font-family:inherit;
+      transition:border-color .2s,box-shadow .2s;outline:none;
+    }
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(40,166,52,.12);background:#fff}
+    .field input::placeholder,.field textarea::placeholder{color:var(--faint)}
+    .field textarea{resize:vertical;min-height:90px}
+    .field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239AA3B2' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+
+    /* ── Budget slider ── */
+    .budget-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+    .budget-opt{padding:7px 14px;border:1.5px solid var(--border);border-radius:20px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .15s;background:#fff;user-select:none}
+    .budget-opt:hover{border-color:var(--accent);color:var(--accent)}
+    .budget-opt.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+
+    /* ── Sidebar ── */
+    .sidebar-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 2px 16px rgba(4,26,64,.06);position:sticky;top:80px}
+    .sidebar-title{font-size:16px;font-weight:800;color:var(--bg-dark);margin-bottom:16px}
+    .sidebar-list{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+    .sidebar-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);line-height:1.5}
+    .sidebar-item::before{content:'✓';width:20px;height:20px;border-radius:4px;background:rgba(40,166,52,.12);color:var(--accent);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .sidebar-note{font-size:12px;color:var(--faint);line-height:1.6;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+
+    /* ── Buttons ── */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;border:none;font-family:inherit}
+    .btn-green{background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(40,166,52,.3)}
+    .btn-green:hover{background:#21922B;transform:translateY(-1px);box-shadow:0 6px 24px rgba(40,166,52,.4)}
+    .btn-block{width:100%;justify-content:center}
+    .btn-lg{padding:16px 28px;font-size:16px}
+    .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .btn.loading .spinner{display:block}
+    .btn.loading .btn-text{display:none}
+
+    /* ── Form note ── */
+    .form-note{font-size:11px;color:var(--faint);text-align:center;margin-top:12px;line-height:1.6}
+
+    /* ── Success state ── */
+    .success-block{display:none;text-align:center;padding:48px 32px}
+    .success-icon{font-size:56px;margin-bottom:16px}
+    .success-block h2{font-size:26px;font-weight:800;color:var(--bg-dark);margin-bottom:10px}
+    .success-block p{font-size:15px;color:var(--muted);max-width:400px;margin:0 auto}
+
+    /* ── Toast ── */
+    .toast{position:fixed;bottom:24px;right:24px;z-index:999;background:var(--accent);color:#fff;padding:14px 20px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;transform:translateY(12px);transition:all .3s;pointer-events:none;box-shadow:0 8px 24px rgba(40,166,52,.4)}
+    .toast.show{opacity:1;transform:none}
+
+    /* ── Loading skeleton ── */
+    .loading-opts{color:var(--faint);font-size:13px;padding:8px 0}
+
+    @media(max-width:600px){
+      .page{padding:28px 16px 60px}
+      .card{padding:22px 18px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <nav class="nav">
+    <a href="/" class="logo">AutoBiz<span>Lab</span></a>
+    <a href="/" class="back-link">← <span data-i18n="back">На главную</span></a>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </nav>
+</header>
+
+<div class="page">
+
+  <!-- ── Hero ── -->
+  <div class="page-hero">
+    <div class="step-badge">✅ <span data-i18n="badge">Шаг 2 из 2 — Детали заявки</span></div>
+    <h1 data-i18n="h1">Расскажите о вашем бизнесе</h1>
+    <p class="page-sub" data-i18n="sub">Это займёт 3–5 минут. Поможет нам подготовить конкретный план под ваш бизнес.</p>
+  </div>
+
+  <!-- ── Progress ── -->
+  <div class="progress-bar">
+    <div class="prog-step done">
+      <div class="prog-dot">✓</div>
+      <div class="prog-label" data-i18n="prog1">Контакты</div>
+    </div>
+    <div class="prog-step active">
+      <div class="prog-dot">2</div>
+      <div class="prog-label" data-i18n="prog2">Детали</div>
+    </div>
+    <div class="prog-step">
+      <div class="prog-dot">3</div>
+      <div class="prog-label" data-i18n="prog3">Готово</div>
+    </div>
+  </div>
+
+  <!-- ── Layout ── -->
+  <div class="form-grid">
+
+    <!-- ── Main form ── -->
+    <div id="formArea">
+      <form id="enquireForm" novalidate>
+
+        <!-- Контактные данные -->
+        <div class="card">
+          <div class="card-title"><div class="icon">👤</div><span data-i18n="s1">Контактные данные</span></div>
+
+          <div class="field-row">
+            <div class="field">
+              <label data-i18n="l_first">Имя *</label>
+              <input name="first_name" type="text" required data-i18n-ph="ph_first" placeholder="Иван"/>
+            </div>
+            <div class="field">
+              <label data-i18n="l_last">Фамилия</label>
+              <input name="last_name" type="text" data-i18n-ph="ph_last" placeholder="Петров"/>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label data-i18n="l_phone">Телефон / WhatsApp *</label>
+              <input name="phone" type="tel" required id="f_phone" data-i18n-ph="ph_phone" placeholder="+971 50 123 4567"/>
+            </div>
+            <div class="field">
+              <label data-i18n="l_email">Email</label>
+              <input name="email" type="email" data-i18n-ph="ph_email" placeholder="ivan@company.com"/>
+            </div>
+          </div>
+
+          <div class="field">
+            <label data-i18n="l_role">Ваша роль в компании</label>
+            <select name="role" id="sel_role">
+              <option value="" data-i18n="sel_role_ph">— выберите —</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Информация о бизнесе -->
+        <div class="card">
+          <div class="card-title"><div class="icon">🏢</div><span data-i18n="s2">Информация о бизнесе</span></div>
+
+          <div class="field-row">
+            <div class="field">
+              <label data-i18n="l_niche">Ниша / сфера бизнеса</label>
+              <select name="business_niche" id="sel_niche">
+                <option value="" data-i18n="sel_niche_ph">— выберите —</option>
+              </select>
+            </div>
+            <div class="field">
+              <label data-i18n="l_size">Размер компании</label>
+              <select name="company_size" id="sel_size">
+                <option value="" data-i18n="sel_size_ph">— выберите —</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label data-i18n="l_volume">Объём задачи</label>
+              <select name="task_volume" id="sel_volume">
+                <option value="" data-i18n="sel_vol_ph">— выберите —</option>
+              </select>
+            </div>
+            <div class="field">
+              <label data-i18n="l_timeline">Когда нужен результат</label>
+              <select name="timeline" id="sel_timeline">
+                <option value="" data-i18n="sel_time_ph">— выберите —</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label data-i18n="l_biz_info">Краткое описание бизнеса / задачи</label>
+            <textarea name="business_info" rows="3" data-i18n-ph="ph_biz_info" placeholder="Чем занимается компания, какие процессы хотите автоматизировать…"></textarea>
+          </div>
+        </div>
+
+        <!-- Тип задачи -->
+        <div class="card">
+          <div class="card-title"><div class="icon">⚡</div><span data-i18n="s3">Интересующая услуга</span></div>
+
+          <div class="field-row">
+            <div class="field">
+              <label data-i18n="l_task_type">Тип задачи</label>
+              <select name="task_type" id="sel_task_type">
+                <option value="" data-i18n="sel_task_ph">— выберите —</option>
+              </select>
+              </div>
+            <div class="field">
+              <label data-i18n="l_product">Интересующий продукт</label>
+              <select name="interested_product" id="sel_product">
+                <option value="" data-i18n="sel_prod_ph">— выберите —</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Бюджет -->
+        <div class="card">
+          <div class="card-title"><div class="icon">💰</div><span data-i18n="s4">Бюджет проекта</span></div>
+          <div class="field">
+            <label data-i18n="l_budget">Ориентировочный бюджет</label>
+            <div class="budget-options" id="budgetOptions">
+              <span class="loading-opts" data-i18n="loading">Загрузка…</span>
+            </div>
+            <input type="hidden" name="budget" id="budgetInput"/>
+          </div>
+        </div>
+
+        <!-- Коммуникация -->
+        <div class="card">
+          <div class="card-title"><div class="icon">💬</div><span data-i18n="s5">Способ связи</span></div>
+
+          <div class="field-row">
+            <div class="field">
+              <label data-i18n="l_contact">Предпочтительный канал</label>
+              <select name="contact_preference" id="sel_contact">
+                <option value="" data-i18n="sel_contact_ph">— выберите —</option>
+              </select>
+            </div>
+            <div class="field">
+              <label data-i18n="l_pref_time">Удобное время</label>
+              <input name="preferred_time" type="text" data-i18n-ph="ph_pref_time" placeholder="10:00–13:00 UTC+4"/>
+            </div>
+          </div>
+
+          <div class="field">
+            <label data-i18n="l_comments">Комментарий / дополнительные вопросы</label>
+            <textarea name="comments" rows="3" data-i18n-ph="ph_comments" placeholder="Любая информация, которую хотите добавить…"></textarea>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div style="margin-top:24px">
+          <button type="submit" class="btn btn-green btn-lg btn-block" id="submitBtn">
+            <span class="btn-text" data-i18n="submit_btn">Отправить заявку →</span>
+            <span class="spinner"></span>
+          </button>
+          <p class="form-note" data-i18n="form_note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Данные не передаются третьим лицам.</p>
+        </div>
+
+      </form>
+
+      <!-- Success -->
+      <div class="success-block" id="successBlock">
+        <div class="success-icon">🎉</div>
+        <h2 data-i18n="ok_h">Заявка отправлена!</h2>
+        <p data-i18n="ok_p">Мы свяжемся с вами в течение 24 часов и подготовим персональный план внедрения AI.</p>
+      </div>
+    </div><!-- /formArea -->
+
+    <!-- ── Sidebar ── -->
+    <aside>
+      <div class="sidebar-card">
+        <div class="sidebar-title" data-i18n="side_title">На бесплатном аудите вы получите:</div>
+        <div class="sidebar-list">
+          <div class="sidebar-item" data-i18n="side_i1">Анализ текущих процессов</div>
+          <div class="sidebar-item" data-i18n="side_i2">Список задач для автоматизации</div>
+          <div class="sidebar-item" data-i18n="side_i3">Расчёт потенциальной экономии</div>
+          <div class="sidebar-item" data-i18n="side_i4">AI-план под ваш бизнес</div>
+          <div class="sidebar-item" data-i18n="side_i5">30 минут • бесплатно • без обязательств</div>
+        </div>
+        <div class="sidebar-note" data-i18n="side_note">
+          Мы работаем с компаниями в ОАЭ, Саудовской Аравии и других рынках MENA. Понимаем местную специфику и требования.
+      </div>
+      </div>
+    </aside>
+
+  </div><!-- /form-grid -->
+</div><!-- /page -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─────────────────────────────────────────────
+// i18n
+// ─────────────────────────────────────────────
+const i18n = {
+  ru: {
+    'back':'На главную','badge':'Шаг 2 из 2 — Детали заявки',
+    'h1':'Расскажите о вашем бизнесе',
+    'sub':'Это займёт 3–5 минут. Поможет нам подготовить конкретный план под ваш бизнес.',
+    'prog1':'Контакты','prog2':'Детали','prog3':'Готово',
+    's1':'Контактные данные','s2':'Информация о бизнесе',
+    's3':'Интересующая услуга','s4':'Бюджет проекта','s5':'Способ связи',
+    'l_first':'Имя *','l_last':'Фамилия','l_phone':'Телефон / WhatsApp *',
+    'l_email':'Email','l_role':'Ваша роль в компании',
+    'l_niche':'Ниша / сфера бизнеса','l_size':'Размер компании',
+    'l_volume':'Объём задачи','l_timeline':'Когда нужен результат',
+    'l_biz_info':'Краткое описание бизнеса / задачи',
+    'l_task_type':'Тип задачи','l_product':'Интересующий продукт',
+    'l_budget':'Ориентировочный бюджет',
+    'l_contact':'Предпочтительный канал','l_pref_time':'Удобное время',
+    'l_comments':'Комментарий / дополнительные вопросы',
+    'ph_first':'Иван','ph_last':'Петров',
+    'ph_phone':'+971 50 123 4567','ph_email':'ivan@company.com',
+    'ph_biz_info':'Чем занимается компания, какие процессы хотите автоматизировать…',
+    'ph_pref_time':'10:00–13:00 UTC+4',
+    'ph_comments':'Любая информация, которую хотите добавить…',
+    'sel_role_ph':'— выберите —','sel_niche_ph':'— выберите —',
+    'sel_size_ph':'— выберите —','sel_vol_ph':'— выберите —',
+    'sel_time_ph':'— выберите —','sel_task_ph':'— выберите —',
+    'sel_prod_ph':'— выберите —','sel_contact_ph':'— выберите —',
+    'loading':'Загрузка…',
+    'submit_btn':'Отправить заявку →',
+    'form_note':'Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Данные не передаются третьим лицам.',
+    'ok_h':'Заявка отправлена!',
+    'ok_p':'Мы свяжемся с вами в течение 24 часов и подготовим персональный план внедрения AI.',
+    'side_title':'На бесплатном аудите вы получите:',
+    'side_i1':'Анализ текущих процессов',
+    'side_i2':'Список задач для автоматизации',
+    'side_i3':'Расчёт потенциальной экономии',
+    'side_i4':'AI-план под ваш бизнес',
+    'side_i5':'30 минут • бесплатно • без обязательств',
+    'side_note':'Мы работаем с компаниями в ОАЭ, Саудовской Аравии и других рынках MENA. Понимаем местную специфику и требования.',
+    'err_required':'Заполните обязательные поля: Имя и Телефон',
+    'err_net':'Сеть недоступна. Попробуйте ещё раз.',
+  },
+  en: {
+    'back':'Back to home','badge':'Step 2 of 2 — Application details',
+    'h1':'Tell us about your business',
+    'sub':'Takes 3–5 minutes. Helps us prepare a concrete plan for your business.',
+    'prog1':'Contacts','prog2':'Details','prog3':'Done',
+    's1':'Contact details','s2':'Business information',
+    's3':'Service of interest','s4':'Project budget','s5':'Communication',
+    'l_first':'First name *','l_last':'Last name','l_phone':'Phone / WhatsApp *',
+    'l_email':'Email','l_role':'Your role in the company',
+    'l_niche':'Business niche / industry','l_size':'Company size',
+    'l_volume':'Task scope','l_timeline':'When do you need results',
+    'l_biz_info':'Brief description of your business / task',
+    'l_task_type':'Task type','l_product':'Product of interest',
+    'l_budget':'Approximate budget',
+    'l_contact':'Preferred channel','l_pref_time':'Convenient time',
+    'l_comments':'Comments / additional questions',
+    'ph_first':'John','ph_last':'Smith',
+    'ph_phone':'+971 50 123 4567','ph_email':'john@company.com',
+    'ph_biz_info':'What your company does, which processes you want to automate…',
+    'ph_pref_time':'10:00–13:00 UTC+4',
+    'ph_comments':'Any additional information you want to share…',
+    'sel_role_ph':'— select —','sel_niche_ph':'— select —',
+    'sel_size_ph':'— select —','sel_vol_ph':'— select —',
+    'sel_time_ph':'— select —','sel_task_ph':'— select —',
+    'sel_prod_ph':'— select —','sel_contact_ph':'— select —',
+    'loading':'Loading…',
+    'submit_btn':'Submit application →',
+    'form_note':'By clicking the button you agree to our privacy policy. Your data is never shared with third parties.',
+    'ok_h':'Application submitted!',
+    'ok_p':'We will contact you within 24 hours and prepare a personalised AI implementation plan.',
+    'side_title':'At the free audit you will receive:',
+    'side_i1':'Analysis of current processes',
+    'side_i2':'List of tasks ready for automation',
+    'side_i3':'Potential savings calculation',
+    'side_i4':'AI implementation plan for your business',
+    'side_i5':'30 minutes • free • no commitment',
+    'side_note':'We work with companies in UAE, Saudi Arabia and other MENA markets. We understand local specifics and requirements.',
+    'err_required':'Please fill in required fields: First name and Phone',
+    'err_net':'Network unavailable. Please try again.',
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'ru';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const k = el.getAttribute('data-i18n-ph');
+    if (t[k] !== undefined) el.placeholder = t[k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === lang)
+  );
+}
+document.querySelectorAll('.lang-btn').forEach(b =>
+  b.addEventListener('click', () => applyLang(b.dataset.lang))
+);
+
+// ─────────────────────────────────────────────
+// Load dynamic options from /api/admin/settings
+// ─────────────────────────────────────────────
+async function loadSettings() {
+  try {
+    const res = await fetch('/api/admin/settings');
+    if (!res.ok) return;
+    const settings = await res.json();
+    const map = {};
+    settings.forEach(s => { map[s.key] = JSON.parse(s.value); });
+
+    populateSelect('sel_role',     map.roles,           i18n[currentLang]['sel_role_ph']);
+    populateSelect('sel_niche',    map.industries,      i18n[currentLang]['sel_niche_ph']);
+    populateSelect('sel_size',     map.company_sizes,   i18n[currentLang]['sel_size_ph']);
+    populateSelect('sel_volume',   map.task_volumes,    i18n[currentLang]['sel_vol_ph']);
+    populateSelect('sel_timeline', map.timelines,       i18n[currentLang]['sel_time_ph']);
+    populateSelect('sel_task_type',map.services,        i18n[currentLang]['sel_task_ph']);
+    populateSelect('sel_product',  map.services,        i18n[currentLang]['sel_prod_ph']);
+    populateSelect('sel_contact',  map.contact_methods, i18n[currentLang]['sel_contact_ph']);
+    renderBudget(map.budget_ranges || []);
+  } catch(e) {
+    console.warn('Could not load admin settings:', e);
+  }
+}
+
+function populateSelect(id, items, placeholder) {
+  const el = document.getElementById(id);
+  if (!el || !items) return;
+  el.innerHTML = `<option value="">${placeholder}</option>`;
+  items.forEach(v => {
+    const opt = document.createElement('option');
+    opt.value = v;
+    opt.textContent = v;
+    el.appendChild(opt);
+  });
+}
+
+function renderBudget(ranges) {
+  const container = document.getElementById('budgetOptions');
+  container.innerHTML = '';
+  ranges.forEach(r => {
+    const btn = document.createElement('div');
+    btn.className = 'budget-opt';
+    btn.textContent = r;
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.budget-opt').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      document.getElementById('budgetInput').value = r;
+    });
+    container.appendChild(btn);
+  });
+}
+
+// ─────────────────────────────────────────────
+// Pre-fill from URL params (passed from quick form)
+// ─────────────────────────────────────────────
+function preFill() {
+  const p = new URLSearchParams(window.location.search);
+  const nameVal  = p.get('name') || '';
+  const phoneVal = p.get('phone') || '';
+  const lang     = p.get('lang');
+
+  if (lang && i18n[lang]) applyLang(lang);
+
+  if (phoneVal) document.querySelector('[name=phone]').value = phoneVal;
+  if (nameVal) {
+    const parts = nameVal.trim().split(' ');
+    document.querySelector('[name=first_name]').value = parts[0] || '';
+    if (parts[1]) document.querySelector('[name=last_name]').value = parts[1];
+  }
+}
+
+// ─────────────────────────────────────────────
+// Behavior tracking
+// ─────────────────────────────────────────────
+const behavior = {
+  startTime:      Date.now(),
+  formStartTime:  null,
+  scrollDepth:    0,
+  returnCount:    +(sessionStorage.getItem('enquire_visits') || 0),
+  buttonsClicked: new Set(),
+  cursorHovers:   new Set(),
+};
+
+sessionStorage.setItem('enquire_visits', behavior.returnCount + 1);
+
+window.addEventListener('scroll', () => {
+  const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+  if (pct > behavior.scrollDepth) behavior.scrollDepth = pct;
+}, { passive: true });
+
+document.querySelectorAll('button, .budget-opt, select').forEach(el => {
+  el.addEventListener('click', () => behavior.buttonsClicked.add(el.id || el.name || el.textContent.trim().slice(0,20)));
+});
+
+document.querySelector('#enquireForm').addEventListener('focusin', () => {
+  if (!behavior.formStartTime) behavior.formStartTime = Date.now();
+});
+
+document.querySelectorAll('.card').forEach(c =>
+  c.addEventListener('mouseenter', () => {
+    const t = c.querySelector('.card-title span');
+    if (t) behavior.cursorHovers.add(t.textContent.trim().slice(0,30));
+  })
+);
+
+function getBehaviorData() {
+  return {
+    time_on_page:   Math.round((Date.now() - behavior.startTime) / 1000),
+    form_fill_time: behavior.formStartTime ? Math.round((Date.now() - behavior.formStartTime) / 1000) : 0,
+    scroll_depth:   behavior.scrollDepth,
+    return_count:   behavior.returnCount,
+    buttons_clicked:[...behavior.buttonsClicked],
+    cursor_hovers:  [...behavior.cursorHovers],
+    screen_resolution:`${screen.width}x${screen.height}`,
+    timezone:       Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+  };
+}
+
+// ─────────────────────────────────────────────
+// Toast
+// ─────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ─────────────────────────────────────────────
+// Form submit
+// ─────────────────────────────────────────────
+document.getElementById('enquireForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form  = e.target;
+  const btn   = document.getElementById('submitBtn');
+  const t     = i18n[currentLang];
+
+  const firstName = form.first_name.value.trim();
+  const phone     = form.phone.value.trim();
+  if (!firstName || !phone) {
+    showToast('⚠️ ' + t['err_required']);
+    return;
+  }
+
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  const p = new URLSearchParams(window.location.search);
+  const payload = {
+    first_name:         firstName,
+    last_name:          form.last_name?.value.trim()           || '',
+    phone,
+    email:              form.email?.value.trim()               || '',
+    business_niche:     form.business_niche?.value             || '',
+    company_size:       form.company_size?.value               || '',
+    task_volume:        form.task_volume?.value                || '',
+    role:               form.role?.value                       || '',
+    business_info:      form.business_info?.value.trim()       || '',
+    budget:             document.getElementById('budgetInput').value || '',
+    timeline:           form.timeline?.value                   || '',
+    task_type:          form.task_type?.value                  || '',
+    interested_product: form.interested_product?.value         || '',
+    contact_preference: form.contact_preference?.value         || '',
+    preferred_time:     form.preferred_time?.value.trim()      || '',
+    comments:           form.comments?.value.trim()            || '',
+    language:           currentLang,
+    referrer:           document.referrer || '',
+    utm_source:         p.get('utm_source') || '',
+    utm_medium:         p.get('utm_medium') || '',
+    utm_campaign:       p.get('utm_campaign') || '',
+    ...getBehaviorData(),
+  };
+
+  try {
+    await fetch('/api/leads/enquire', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch(err) {
+    console.warn('Submit error (non-blocking):', err);
+  }
+
+  // Показываем success в любом случае
+  form.style.display = 'none';
+  document.getElementById('successBlock').style.display = 'block';
+  document.getElementById('successBlock').scrollIntoView({ behavior: 'smooth' });
+  window.history.pushState({}, '', '?submitted=1');
+});
+
+// ─────────────────────────────────────────────
+// Init
+// ─────────────────────────────────────────────
+applyLang(currentLang);
+preFill();
+loadSettings();
+</script>
+</body>
+</html>
